@@ -1,0 +1,16 @@
+
+- name: APT Ansible Sample
+  hosts: all
+  tasks:
+  - name: Actualiza lso paquetes de PQT
+    become: true
+    ansible.builtin.apt:
+      upgrade: yes
+      update_cache: yes
+      cache_valid_time: 86400 #Un dia
+  - name: Instala el paquete "nodejs"
+    ansible.builtin.apt:
+      name: nodejs
+  - name: Ejecuta el equivalente a "apt-get clean" en un paso separado
+    ansible.builtin.apt:
+      clean: yes
